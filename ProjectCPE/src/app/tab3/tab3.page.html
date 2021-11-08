@@ -32,22 +32,14 @@
         <ion-label>เวลาที่เริ่ม</ion-label>
         <div style="border: solid 1px; border-radius: 10px">
           <ion-datetime display-format="h:mm A" picker-format="h:mm A" value="1990-02-19T07:43Z" #SetTimeS></ion-datetime>
-          </ion-datetime>
-        </div>
-        <br />
+
         <ion-label>เวลาที่สิ้นสุด</ion-label>
         <div style="border: solid 1px; border-radius: 10px">
           <ion-datetime display-format="h:mm A" picker-format="h:mm A" value="1990-02-19T07:43Z" #SetTimeE>
-          </ion-datetime>
-        </div>
-        <br />
+         
 
         <div style="text-align: center">
           <ion-button color="success"
             (click)="SetDateAndTime(SetDateS.value, SetDateE.value, SetTimeS.value, SetTimeE.value)">Success
           </ion-button>
         </div>
-      </div>
-    </div>
-  </ion-col>
-</ion-content>
