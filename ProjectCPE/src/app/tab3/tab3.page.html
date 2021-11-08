@@ -1,12 +1,12 @@
 <ion-header [translucent]="true">
-  <ion-toolbar color="primary">
-  </ion-toolbar>
+  <ion-toolbar color="primary"> </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar color="primary"> </ion-toolbar>
   </ion-header>
+  
 
   <ion-col>
     <div>
@@ -14,8 +14,12 @@
         <ion-label>วันที่เริ่ม</ion-label>
       </div>
 
-      <div style="border: solid 1px;   border-radius: 10px">
-        <ion-datetime value="2021-02-19" placeholder="Select Date" #SetDateS></ion-datetime>
+      <div style="border: solid 1px; border-radius: 10px">
+        <ion-datetime
+          [(ngModel)]="DateStart"
+          value="2021-02-19"
+          #SetDateS
+        ></ion-datetime>
       </div>
       <br />
 
@@ -24,22 +28,40 @@
       </div>
 
       <div style="border: solid 1px; border-radius: 10px">
-        <ion-datetime value="2021-02-19" placeholder="Select Date" #SetDateE></ion-datetime>
+        <ion-datetime
+          [(ngModel)]="DateFinish"
+          value="2021-02-19"
+          #SetDateE
+        ></ion-datetime>
       </div>
       <br />
 
       <div style="font-size: 15px">
         <ion-label>เวลาที่เริ่ม</ion-label>
         <div style="border: solid 1px; border-radius: 10px">
-          <ion-datetime display-format="h:mm A" picker-format="h:mm A" value="1990-02-19T07:43Z" #SetTimeS></ion-datetime>
-
+          <ion-datetime
+            [(ngModel)]="TimeStart"
+            display-format="h:mm A"
+            picker-format="h:mm A"
+            value="1990-02-19T07:43Z"
+            #SetTimeS
+          ></ion-datetime>
+        </div>
+        <br />
         <ion-label>เวลาที่สิ้นสุด</ion-label>
         <div style="border: solid 1px; border-radius: 10px">
-          <ion-datetime display-format="h:mm A" picker-format="h:mm A" value="1990-02-19T07:43Z" #SetTimeE>
-         
-
-        <div style="text-align: center">
-          <ion-button color="success"
-            (click)="SetDateAndTime(SetDateS.value, SetDateE.value, SetTimeS.value, SetTimeE.value)">Success
-          </ion-button>
+          <ion-datetime
+            [(ngModel)]="TimeFinish"
+            display-format="h:mm A"
+            picker-format="h:mm A"
+            value="1990-02-19T07:43Z"
+            #SetTimeE
+          >
+          </ion-datetime>
         </div>
+      </div>
+      <br />
+      <center><ion-button (click)="submit()"> SUCCESS </ion-button></center>
+    </div></ion-col
+  ></ion-content
+>
