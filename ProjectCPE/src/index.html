@@ -42,6 +42,8 @@
       onSuccess: function () {
         console.log("onConnect");
         client.subscribe("@msg/led");
+        client.subscribe("@msg/Tem");
+        client.subscribe("@msg/Hum");
         //mqttSend("@msg/led", "GET");
       },
       onFailure: function (e) {

@@ -105,7 +105,8 @@ void callback(char* topic, byte* payload, unsigned int length) {
     */
   }
   if (CheckTopic == "@msg/temp") {
-    Serial.println("kokokrunch");
+    Serial.println("OK Temp");
+    client.publish("@msg/Tem", "Temp");
     /*
       Temp_Setting = float_massage;
       utoa(int(Temp_Setting), buffer_temp, 10);
@@ -115,6 +116,8 @@ void callback(char* topic, byte* payload, unsigned int length) {
     */
   }
   if (CheckTopic == "@msg/hum") {
+    Serial.println("OK Hum");
+    client.publish("@msg/Hum", "Hum");
     /*
       Hum_Setting = float_massage;
       utoa(int(Hum_Setting), buffer_hum, 10);
