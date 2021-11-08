@@ -1,17 +1,48 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Tab 2
-    </ion-title>
+  <ion-toolbar color="primary">
+
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 2</ion-title>
-    </ion-toolbar>
+    <ion-toolbar color="primary"> </ion-toolbar>
   </ion-header>
 
-  <app-explore-container name="Tab 2 page"></app-explore-container>
-</ion-content>
+  <ion-col>
+    <div style="font-size: 20px;">
+      อุณหภูมิ
+      <div>{{ ShowTemp }}</div>
+      <div style="text-align: right">
+        <ion-icon name="thermometer-outline"></ion-icon>
+      </div>
+
+      <ion-button (click)="ShowTemperture()" size="small" name="temp" color="tertiary">SHOW</ion-button>
+    </div>
+
+    <div style="font-size: 20px;">
+      ความชื้น
+      <div>{{ ShowHum }}</div>
+      <div style="text-align: right">
+        <ion-icon name="rainy-outline"></ion-icon>
+      </div>
+
+      <ion-button (click)="ShowHumidity()" size="small" name="temp" color="tertiary">SHOW</ion-button>
+    </div>
+
+    <ion-col>
+      <div style="margin-top: 0px ;">
+        <div style="font-size: 20px">
+          <ion-label>อุณหภูมิ C°</ion-label>
+          <ion-input type="number" [(ngModel)]="SetTemperture" #setTemp1></ion-input>
+          <!--(ionChange)="koko(tamo.value)" [(ngModel)]="humidity" #tamo-->
+          <br>
+          <ion-label>ความชื้น %</ion-label>
+          <ion-input type="number" [(ngModel)]="SetHumidity" #setHum1></ion-input>
+        </div>
+
+        <div style="text-align: center">
+          <ion-button color="success" (click)="setTempAndHum(setTemp1.value, setHum1.value)">Success</ion-button>
+        </div>
+      </div>
+    </ion-col>

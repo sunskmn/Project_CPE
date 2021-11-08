@@ -1,0 +1,32 @@
+.button {
+    text-align: center;
+    display: inline-block;
+    font-size: 11px;
+}
+
+ion-col > div {
+    background-color: #f7f7f7;
+    border: solid 1px #ddd;
+    border-radius: 5px;
+    padding: 20px;
+    box-shadow: 3px 3px 3px grey;
+    margin-bottom: 10px;
+    margin: 15px;
+    margin-top: 10%;
+    
+    
+  }
+  
+
+  .grid {
+    display:grid;
+    grid-template-columns: 2fr 1fr   ;
+    font-size: 15px;
+    
+}
+  .p {
+      font-size: 50px;
+  }
+
+  
+ 
