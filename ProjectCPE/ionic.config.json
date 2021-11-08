@@ -1,0 +1,7 @@
+{
+  "name": "ProjectCPE",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
