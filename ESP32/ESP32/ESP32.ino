@@ -105,6 +105,7 @@ void callback(char* topic, byte* payload, unsigned int length) {
     */
   }
   if (CheckTopic == "@msg/temp") {
+    Serial.println("kokokrunch");
     /*
       Temp_Setting = float_massage;
       utoa(int(Temp_Setting), buffer_temp, 10);

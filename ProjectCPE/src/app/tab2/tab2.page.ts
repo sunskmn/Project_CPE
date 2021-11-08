@@ -21,8 +21,11 @@ export class Tab2Page implements OnInit {
   }
 
   sendData() {
+    
+    mqttSend("@msg/temp", ""Tem"");
     console.log(this.SetTemperture);
     console.log(this.SetHumidity);
+    
   }
 
   setTempAndHum(temp, hum) {
