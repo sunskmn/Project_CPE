@@ -33,6 +33,11 @@ void setup() {
   Serial.println(WiFi.localIP());
   client.setServer(mqtt_server, mqtt_port);
   client.setCallback(callback);
+
+  pinMode(2, OUTPUT);
+  pinMode(4, OUTPUT);
+  pinMode(5, OUTPUT);
+  pinMode(15, OUTPUT);
 }
 
 void loop() {
@@ -59,6 +64,15 @@ void loop() {
   String data = "/" + String(random(0, 100)) + "/" + String(random(0, 100));
   data.toCharArray(msg, (data.length() + 1));
   client.publish("@msg/led", msg);
+  digitalWrite(2, HIGH);
+  digitalWrite(4, HIGH);
+  digitalWrite(5, HIGH);
+  digitalWrite(15, HIGH);
+  delay(2000);
+  digitalWrite(2, LOW);
+  digitalWrite(4, LOW);
+  digitalWrite(5, LOW);
+  digitalWrite(15, LOW);
   delay(2000);
 }
 
