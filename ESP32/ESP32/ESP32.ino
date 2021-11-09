@@ -65,14 +65,14 @@ void loop() {
   data.toCharArray(msg, (data.length() + 1));
   client.publish("@msg/led", msg);
   digitalWrite(2, HIGH);
-  digitalWrite(4, HIGH);
-  digitalWrite(5, HIGH);
-  digitalWrite(15, HIGH);
+  //digitalWrite(4, HIGH);
+  //digitalWrite(5, HIGH);
+  //digitalWrite(15, HIGH);
   delay(2000);
   digitalWrite(2, LOW);
-  digitalWrite(4, LOW);
-  digitalWrite(5, LOW);
-  digitalWrite(15, LOW);
+  //digitalWrite(4, LOW);
+  //digitalWrite(5, LOW);
+  //digitalWrite(15, LOW);
   delay(2000);
 }
 
