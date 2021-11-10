@@ -14,11 +14,13 @@ export class Tab2Page implements OnInit {
   humidity: any;
 
   SetTemperture;
-  SetHumidity;พ
+  SetHumidity;
 
   sendData(Tem, Hum) {
     mqttSend('@msg/temp', Tem);
     mqttSend('@msg/hum', Hum);
+    console.log(this.SetTemperture)
+    console.log(this.SetHumidity)
   }
 
   /*
