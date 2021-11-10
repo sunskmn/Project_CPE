@@ -16,7 +16,7 @@ export class Tab1Page implements OnInit {
 
   temperture;
   humidity;
-  ShowTemp;
+  public ShowTemp = 0;
   ShowHum;
   ca = false;
 
@@ -35,6 +35,11 @@ export class Tab1Page implements OnInit {
     
   }
 
+  koko () {
+    this.temperture = Math.floor(Math.random() * (10 - 1 + 1)) + 1;
+    this.ShowTemp = this.temperture;
+  }
+  
   async ShowTemperture() {
     this.ShowTemp = this.temperture;
     let de = await delay(3000);
@@ -47,7 +52,6 @@ export class Tab1Page implements OnInit {
     this.ShowHum = null;
   }
 
-  /*
   async LED_ON() {
     if(this.ca == false){
       this.ca = true;
@@ -60,7 +64,6 @@ export class Tab1Page implements OnInit {
     }
    console.log(this.ca); 
   }
-*/
 
   async ngOnInit() {
     client.onMessageArrived = function (message) {
@@ -69,6 +72,11 @@ export class Tab1Page implements OnInit {
               that.humidity = split_msg[1];
               that.temperture = split_msg[2];
       } 
+    }
+      while (1) {
+        this.ShowTemp = this.temperture;
+        this.ShowHum = this.humidity;
+        let de = await delay(1000);
     }
   }
 }
