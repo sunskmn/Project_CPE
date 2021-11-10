@@ -21,18 +21,10 @@ export class Tab2Page implements OnInit {
   }
 
   sendData(Tem, Hum) {
-    mqttSend("@msg/temp", Tem);
-    mqttSend("@msg/hum", Hum);
-    console.log(this.SetTemperture);
-    console.log(this.SetHumidity);
+    let dataSystem = Tem + "/" + Hum + "/" + "10;11;2021" + "/" + "09:30:00" + "/" + "21:00:00";
+    mqttSend("@msg/DataSys", dataSystem);
+    console.log(dataSystem);
   }
-
-/*
-  setTempAndHum(temp, hum) {
-    mqttSend('@msg/temp', temp);
-    mqttSend('@msg/hum', hum);
-  }
-*/
 
   ngOnInit() {
     client.onMessageArrived = function (message) {
