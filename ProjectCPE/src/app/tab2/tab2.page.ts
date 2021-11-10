@@ -14,20 +14,14 @@ export class Tab2Page implements OnInit {
   humidity: any;
 
   SetTemperture;
-  SetHumidity;
-
-  constructor() {
-    that = this;
-  }
+  SetHumidity;พ
 
   sendData(Tem, Hum) {
-    mqttSend("@msg/temp", Tem);
-    mqttSend("@msg/hum", Hum);
-    console.log(this.SetTemperture);
-    console.log(this.SetHumidity);
+    mqttSend('@msg/temp', Tem);
+    mqttSend('@msg/hum', Hum);
   }
 
-/*
+  /*
   setTempAndHum(temp, hum) {
     mqttSend('@msg/temp', temp);
     mqttSend('@msg/hum', hum);
@@ -36,11 +30,11 @@ export class Tab2Page implements OnInit {
 
   ngOnInit() {
     client.onMessageArrived = function (message) {
-      if (message.destinationName == "@msg/Tem") {
-        console.log("Kuy Tem");
+      if (message.destinationName == '@msg/Tem') {
+        console.log('Kuy Tem');
       }
-      if (message.destinationName == "@msg/Hum") {
-        console.log("Kuy Hum");
+      if (message.destinationName == '@msg/Hum') {
+        console.log('Kuy Hum');
       }
       var split_msg = message.payloadString.split('/');
       if (typeof split_msg[0] != 'undefined' && split_msg[0] == '') {
