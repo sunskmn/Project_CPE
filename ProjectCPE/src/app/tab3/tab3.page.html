@@ -6,62 +6,61 @@
   <ion-header collapse="condense">
     <ion-toolbar color="primary"> </ion-toolbar>
   </ion-header>
-  
 
-  <ion-col>
-    <div>
-      <div style="font-size: 15px">
-        <ion-label>วันที่เริ่ม</ion-label>
-      </div>
+  <center><ion-button color="primary">SHOW</ion-button></center>
 
-      <div style="border: solid 1px; border-radius: 10px">
-        <ion-datetime
-          [(ngModel)]="DateStart"
-          value="2021-02-19"
-          #SetDateS
-        ></ion-datetime>
-      </div>
-      <br />
 
-      <div style="font-size: 15px">
-        <ion-label>วันที่สิ้นสุด</ion-label>
-      </div>
-
-      <div style="border: solid 1px; border-radius: 10px">
-        <ion-datetime
-          [(ngModel)]="DateFinish"
-          value="2021-02-19"
-          #SetDateE
-        ></ion-datetime>
-      </div>
-      <br />
-
-      <div style="font-size: 15px">
-        <ion-label>เวลาที่เริ่ม</ion-label>
-        <div style="border: solid 1px; border-radius: 10px">
-          <ion-datetime
-            [(ngModel)]="TimeStart"
-            display-format="h:mm A"
-            picker-format="h:mm A"
-            value="1990-02-19T07:43Z"
-            #SetTimeS
-          ></ion-datetime>
-        </div>
+  <!-- <ion-list>
+    <ion-item>
+      <ion-label
+        >อุณหภูมิ <br />
         <br />
-        <ion-label>เวลาที่สิ้นสุด</ion-label>
-        <div style="border: solid 1px; border-radius: 10px">
-          <ion-datetime
-            [(ngModel)]="TimeFinish"
-            display-format="h:mm A"
-            picker-format="h:mm A"
-            value="1990-02-19T07:43Z"
-            #SetTimeE
-          >
-          </ion-datetime>
-        </div>
-      </div>
-      <br />
-      <center><ion-button (click)="submit()"> SUCCESS </ion-button></center>
-    </div></ion-col
-  ></ion-content
->
+        35
+      </ion-label>
+     
+      <ion-button color="secondary">แก้ไข</ion-button>
+      <ion-button color="danger">ลบ</ion-button>
+    </ion-item>
+    <br>
+    <ion-item>
+      <ion-label
+        >ความชื้น <br />
+        <br />
+        60
+      </ion-label>
+      <ion-button color="secondary">แก้ไข</ion-button>
+      <ion-button color="danger">ลบ</ion-button>
+    </ion-item>
+    <br>
+    <ion-item>
+      <ion-label
+        >วันที่ <br />
+        <br />
+        10/11/2564</ion-label
+      >
+      <ion-button color="secondary">แก้ไข</ion-button>
+      <ion-button color="danger">ลบ</ion-button>
+    </ion-item>
+    <br>
+    <ion-item>
+      <ion-label
+        >เวลาที่เริ่ม <br />
+        <br />
+        17:00น.</ion-label
+      >
+      <ion-button color="secondary">แก้ไข</ion-button>
+      <ion-button color="danger">ลบ</ion-button>
+    </ion-item>
+    <br>
+    <ion-item>
+      <ion-label
+        >เวลาที่สิ้นสุด <br />
+        <br />
+        18:00น.</ion-label
+      >
+      <ion-button color="secondary">แก้ไข</ion-button>
+      <ion-button color="danger">ลบ</ion-button>
+    </ion-item>
+  </ion-list>
+</ion-content>
+ -->
