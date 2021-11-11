@@ -9,6 +9,7 @@ import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
 import { DatePipe } from '@angular/common';
 
+import {InputTextModule} from 'primeng/inputtext';
 
 @NgModule({
   declarations: [AppComponent],
@@ -18,6 +19,8 @@ import { DatePipe } from '@angular/common';
     IonicModule.forRoot(),
     AppRoutingModule,
     FormsModule,
+    InputTextModule
+    
   ],
 
   providers: [

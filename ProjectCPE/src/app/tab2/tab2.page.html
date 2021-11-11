@@ -1,5 +1,6 @@
 <ion-header [translucent]="true">
   <ion-toolbar color="primary"> </ion-toolbar>
+  
 </ion-header>
 
 <ion-content [fullscreen]="true">
@@ -7,30 +8,93 @@
     <ion-toolbar color="primary"> </ion-toolbar>
   </ion-header>
 
-    
-
+  <center>
     <ion-col>
-      <div style="margin-top: 0px">
-        <div style="font-size: 20px">
-          <ion-label>อุณหภูมิ C°</ion-label>
-
+      <ion-item>
+        <ion-label
+          >อุณหภูมิ
           <ion-input
             type="number"
             [(ngModel)]="SetTemperture"
             #setTemp1
           ></ion-input>
-          <!--(ionChange)="koko(tamo.value)" [(ngModel)]="humidity" #tamo-->
-          <br />
-          <ion-label>ความชื้น %</ion-label>
+        </ion-label>
+      </ion-item>
+      
+      <ion-item>
+        <ion-label
+          >ความชื้น
           <ion-input
             type="number"
             [(ngModel)]="SetHumidity"
             #setHum1
           ></ion-input>
-        <div style="text-align: center">
-          <ion-button (click)="sendData(setTemp1.value, setHum1.value)">
-            SUCCESS
-          </ion-button>
-        
-  
+        </ion-label>
+      </ion-item>
+      
 
+      <ion-item>
+        <ion-label
+          >วันที่เริ่ม
+
+          <div class="ion-datestart">
+            <ion-datetime
+              [(ngModel)]="DateStart"
+              value="2021-02-19"
+              #SetDateS
+            ></ion-datetime>
+          </div>
+        </ion-label>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>วันที่สิ้นสุด
+
+        <div class="ion-datefinish">
+          <ion-datetime
+            [(ngModel)]="DateFinish"
+            value="2021-02-19"
+            #SetDateE
+          ></ion-datetime>
+        </div>
+      </ion-label>
+      </ion-item>
+
+      <ion-item>
+        
+          <ion-label>เวลาที่เริ่ม
+       
+        <div class="ion-timestart">
+          <ion-datetime
+            [(ngModel)]="TimeStart"
+            display-format="h:mm A"
+            picker-format="h:mm A"
+            value="1990-02-19T07:43Z"
+            #SetTimeS
+          ></ion-datetime>
+        </div>
+      </ion-label>
+      </ion-item>
+
+      <ion-item>
+        
+          <ion-label>เวลาที่สิ้นสุด
+       
+        <div class="ion-timefinish">
+          <ion-datetime
+            [(ngModel)]="TimeFinish"
+            display-format="h:mm A"
+            picker-format="h:mm A"
+            value="1990-02-19T07:43Z"
+            #SetTimeE
+          >
+          </ion-datetime>
+        </div>
+      </ion-label>
+      </ion-item>
+      <ion-button  color="tertiary" (click)="sendData(setTemp1.value, setHum1.value)">
+        SUCCESS
+      </ion-button>
+    </ion-col>
+  </center></ion-content
+>

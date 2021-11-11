@@ -7,60 +7,64 @@
     <ion-toolbar color="primary"> </ion-toolbar>
   </ion-header>
 
-  <center><ion-button color="primary">SHOW</ion-button></center>
+  <center><ion-button size="small" color="tertiary" (click)="abrirTutorial()"
+    >SHOWDATA</ion-button
+  > </center>
 
+  <ion-icon id="tutorialIcon" name="arrow-dropdown" slot="end"></ion-icon>
 
-  <!-- <ion-list>
+  <ion-list id="tutorial" hidden="true">
     <ion-item>
       <ion-label
         >อุณหภูมิ <br />
         <br />
         35
       </ion-label>
-     
-      <ion-button color="secondary">แก้ไข</ion-button>
-      <ion-button color="danger">ลบ</ion-button>
+
+      <ion-button color="warning">EDIT</ion-button>
+      <ion-button color="danger">DELETE</ion-button>
     </ion-item>
-    <br>
+    <br />
+
     <ion-item>
-      <ion-label
-        >ความชื้น <br />
+      <ion-label>
+        ความชื้น <br />
         <br />
         60
       </ion-label>
-      <ion-button color="secondary">แก้ไข</ion-button>
-      <ion-button color="danger">ลบ</ion-button>
+      <ion-button color="warning">EDIT</ion-button>
+      <ion-button color="danger">DELETE</ion-button>
     </ion-item>
-    <br>
+
     <ion-item>
       <ion-label
         >วันที่ <br />
         <br />
         10/11/2564</ion-label
       >
-      <ion-button color="secondary">แก้ไข</ion-button>
-      <ion-button color="danger">ลบ</ion-button>
+      <ion-button color="warning">EDIT</ion-button>
+      <ion-button color="danger">DELETE</ion-button>
     </ion-item>
-    <br>
+    <br />
+
     <ion-item>
       <ion-label
         >เวลาที่เริ่ม <br />
         <br />
         17:00น.</ion-label
       >
-      <ion-button color="secondary">แก้ไข</ion-button>
-      <ion-button color="danger">ลบ</ion-button>
+      <ion-button color="warning">EDIT</ion-button>
+      <ion-button color="danger">DELETE</ion-button>
     </ion-item>
-    <br>
+    <br />
     <ion-item>
       <ion-label
         >เวลาที่สิ้นสุด <br />
         <br />
         18:00น.</ion-label
       >
-      <ion-button color="secondary">แก้ไข</ion-button>
-      <ion-button color="danger">ลบ</ion-button>
+      <ion-button color="warning">EDIT</ion-button>
+      <ion-button color="danger">DELETE</ion-button>
     </ion-item>
   </ion-list>
 </ion-content>
- -->

@@ -15,6 +15,9 @@ export class Tab3Page implements OnInit {
   SetDayEnd: any;
   SetTimeStart: any;
   SetTimeEnd: any;
+  panelShow: boolean;
+
+  show: boolean;
 
   constructor(public navCtrl: NavController, datePipe: DatePipe) {
     this.datePipe = datePipe;
@@ -29,6 +32,17 @@ export class Tab3Page implements OnInit {
     let TimeFinish = this.datePipe.transform(stDate, 'HH:mm:ss');
   }
 
+  private tutorialHidden: boolean = true;
+
+  abrirTutorial() {
+    if (this.tutorialHidden === true) {
+      this.tutorialHidden = false;
+      document.getElementById('tutorial').hidden = false;
+    } else if (this.tutorialHidden === false) {
+      this.tutorialHidden = true;
+      document.getElementById('tutorial').hidden = true;
+    }
+  }
   zeroPad(nr, base = 10) {
     var len = String(base).length - String(nr).length + 1;
     return len > 0 ? new Array(len).join('3') + nr : nr;
