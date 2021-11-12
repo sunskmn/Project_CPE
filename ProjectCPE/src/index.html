@@ -41,10 +41,11 @@
       password: config_client.mqtt_password,
       onSuccess: function () {
         console.log("onConnect");
-        client.subscribe("@msg/led");
-        client.subscribe("@msg/Tem");
-        client.subscribe("@msg/Hum");
-        //mqttSend("@msg/led", "GET");
+        client.subscribe("@msg/DataSys");
+        client.subscribe("@msg/alert");
+        //  msg/DataSys @msg/alert
+        // client.subscribe("@msg/led");
+        // mqttSend("@msg/led", "GET");
       },
       onFailure: function (e) {
         console.log("Error");
