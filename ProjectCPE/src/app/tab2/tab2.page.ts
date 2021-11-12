@@ -2,7 +2,8 @@ import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
 import Swal from 'sweetalert2';
-
+import { AlertController } from '@ionic/angular';
+import { timer } from 'rxjs';
 
 declare var client;
 declare var mqttSend;
@@ -25,7 +26,11 @@ export class Tab2Page implements OnInit {
   SetTimeStart: any;
   SetTimeEnd: any;
 
-  constructor(public navCtrl: NavController, datePipe: DatePipe) {
+  constructor(
+    public navCtrl: NavController,
+    datePipe: DatePipe,
+    public alertController: AlertController
+  ) {
     this.datePipe = datePipe;
 
     var tzoffset = new Date().getTimezoneOffset() * 60000; //offset in milliseconds
@@ -37,14 +42,36 @@ export class Tab2Page implements OnInit {
     let TimeStart = this.datePipe.transform(stDate, 'HH:mm:ss');
     let TimeFinish = this.datePipe.transform(stDate, 'HH:mm:ss');
   }
-  
 
   sendData(Tem, Hum, Date, TimeB, TimeF) {
-    let DataSYS = Tem + "/" + Hum + "/" + Date + "/" + TimeB + "/" + TimeF;
-    console.log(DataSYS);
-    mqttSend("@msg/DataSys", DataSYS);
-    
+    let alert = document.getElementsByClassName('alert')[0] as HTMLElement;
+    // if(Tem && Hum && Date && TimeB && TimeF){
+    //   alert.style.display = "flex"
+    // }
 
+    let DataSYS = Tem + '/' + Hum + '/' + Date + '/' + TimeB + '/' + TimeF;
+    console.log(DataSYS);
+    mqttSend('@msg/DataSys', DataSYS);
+    let alertt = this.alertController
+      .create({
+        header: 'Alert',
+
+        subHeader: 'สำเร็จ',
+
+        buttons: ['OK'],
+      })
+      .then((res) => {
+        res.present();
+      });
+
+    // Swal.fire({
+
+    //   position: 'center',
+    //   icon: 'success',
+    //   title: 'ส่งสำเร็จ',
+    //   showConfirmButton: false,
+    //   timer: 1500,
+    // });
   }
   TimeFinish(TimeFinish: any) {
     throw new Error('Method not implemented.');
@@ -59,18 +86,10 @@ export class Tab2Page implements OnInit {
     throw new Error('Method not implemented.');
   }
 
-  
   ngOnInit() {
     client.onMessageArrived = function (message) {
-      if (message.destinationName == "@msg/alert") {
-        console.log("Kuy Tem");
-        Swal.fire({
-          position: 'top-end',
-          icon: 'success',
-          title: 'ส่งสำเร็จ',
-          showConfirmButton: false,
-          timer: 1500,
-        });
+      if (message.destinationName == '@msg/alert') {
+        console.log('Kuy Tem');
       }
 
       var split_msg = message.payloadString.split('/');
@@ -80,9 +99,4 @@ export class Tab2Page implements OnInit {
       }
     };
   }
-  
-  
-  
 }
-
-
