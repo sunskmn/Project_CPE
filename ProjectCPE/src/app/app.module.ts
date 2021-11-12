@@ -11,6 +11,7 @@ import { DatePipe } from '@angular/common';
 
 
 
+
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -19,6 +20,8 @@ import { DatePipe } from '@angular/common';
     IonicModule.forRoot(),
     AppRoutingModule,
     FormsModule,
+    
+    
   
     
   ],
