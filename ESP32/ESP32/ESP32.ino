@@ -37,9 +37,8 @@ struct storeStruct_t {
   } DaySubSec[16];
 };
 
-// Motuthree 08123456
-const char* ssid = "Motuthree";
-const char* password = "08123456";
+//const char* ssid = "Motuthree";
+//const char* password = "08123456";
 
 const char* mqtt_server = "broker.netpie.io";
 const int mqtt_port = 1883;
@@ -97,7 +96,7 @@ void setup() {
   // Connect WIFI
   Serial.println();
   Serial.print("Connecting to ");
-  WiFi.begin(ssid, password);
+  WiFi.begin(settings.ssid, settings.pass);
   while (WiFi.status() != WL_CONNECTED) {
     delay(500);
     Serial.print(".");
@@ -170,14 +169,19 @@ void callback(char* topic, byte* payload, unsigned int length) {
   }
   if (message == "LEDOFF") {
   }
-  if (CheckTopic == "@msg/DataSys") {
-    client.publish("@msg/alert", "Sent OK");
+  if (CheckTopic == "@msg/DataSys" && settings.CountSYS < 15) {
     Serial.println("Sent OK");
     for (int i = 0; i < 5; i++) {
       DataSYS[i] = Split(message, '/', i);
       Serial.println(DataSYS[i]);
     }
-    for (settings.CountSYS; settings.CountSYS < 17; settings.CountSYS++) {
+    if (settings.CountSYS < 16) {
+      settings.CountSYS++;
+      Serial.println("CountSYS : " + String(settings.CountSYS));
+    } else {
+      Serial.println("100%");
+    }
+    for (settings.CountSYS; settings.CountSYS > 17; settings.CountSYS++) {
       Serial.println("CountSYS : " + String(settings.CountSYS));
     }
     settings.DaySubSec[settings.CountSYS].Temp = DataSYS[0].toFloat();
@@ -185,5 +189,7 @@ void callback(char* topic, byte* payload, unsigned int length) {
     DataSYS[2].toCharArray(settings.DaySubSec[settings.CountSYS].ToDay, 10);
     DataSYS[3].toCharArray(settings.DaySubSec[settings.CountSYS].TimeBefore, 8);
     DataSYS[4].toCharArray(settings.DaySubSec[settings.CountSYS].TimeAfter, 8);
+    SaveEEPROM();
+    client.publish("@msg/alert", "Sent OK");
   }
 }
