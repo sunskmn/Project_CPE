@@ -184,6 +184,7 @@ void callback(char* topic, byte* payload, unsigned int length) {
     for (settings.CountSYS; settings.CountSYS > 17; settings.CountSYS++) {
       Serial.println("CountSYS : " + String(settings.CountSYS));
     }
+    Serial.println("koko");
     settings.DaySubSec[settings.CountSYS].Temp = DataSYS[0].toFloat();
     settings.DaySubSec[settings.CountSYS].Hum = DataSYS[1].toInt();
     DataSYS[2].toCharArray(settings.DaySubSec[settings.CountSYS].ToDay, 10);
