@@ -1,53 +1,49 @@
-
 <ion-header [translucent]="true">
   <ion-toolbar color="primary"> </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true"></ion-content>
-  <ion-header collapse="condense">
-    <ion-toolbar color="primary"> </ion-toolbar>
-  </ion-header>
+<ion-header collapse="condense">
+  <ion-toolbar color="primary"> </ion-toolbar>
+</ion-header>
 
-  <center>
-    <ion-col>
-      <ion-item>
-        <ion-label
-          >อุณหภูมิ
-          <ion-input
-            type="number"
-            [(ngModel)]="SetTemperture"
-            #setTemp1
-          ></ion-input>
-        </ion-label>
-      </ion-item>
-      
-      <ion-item>
-        <ion-label
-          >ความชื้น
-          <ion-input
-            type="number"
-            [(ngModel)]="SetHumidity"
-            #setHum1
-          ></ion-input>
-        </ion-label>
-      </ion-item>
-      
-      <ion-item>
-        <ion-label
-          >วันที่เริ่ม
+<center>
+  <ion-col>
+    <ion-item>
+      <ion-label
+        >อุณหภูมิ
+        <ion-input
+          type="number"
+          [(ngModel)]="SetTemperture"
+          #setTemp1
+        ></ion-input>
+      </ion-label>
+    </ion-item>
 
-          <div class="ion-datestart">
-            <ion-datetime
-              [(ngModel)]="DateStart"
-              value="2021-02-19"
-              #SetDateS
-            ></ion-datetime>
-          </div>
-        </ion-label>
-      </ion-item>
+    <ion-item>
+      <ion-label
+        >ความชื้น
+        <ion-input type="number" [(ngModel)]="SetHumidity" #setHum1></ion-input>
+      </ion-label>
+    </ion-item>
 
-      <ion-item>
-          <ion-label>เวลาที่เริ่ม
+    <ion-item>
+      <ion-label
+        >วันที่เริ่ม
+
+        <div class="ion-datestart">
+          <ion-datetime
+            [(ngModel)]="DateStart"
+            value="2021-02-19"
+            #SetDateS
+          ></ion-datetime>
+        </div>
+      </ion-label>
+    </ion-item>
+
+    <ion-item>
+      <ion-label
+        >เวลาที่เริ่ม
         <div class="ion-timestart">
           <ion-datetime
             [(ngModel)]="TimeStart"
@@ -58,10 +54,11 @@
           ></ion-datetime>
         </div>
       </ion-label>
-      </ion-item>
+    </ion-item>
 
-      <ion-item>
-          <ion-label>เวลาที่สิ้นสุด
+    <ion-item>
+      <ion-label
+        >เวลาที่สิ้นสุด
         <div class="ion-timefinish">
           <ion-datetime
             [(ngModel)]="TimeFinish"
@@ -72,16 +69,12 @@
           ></ion-datetime>
         </div>
       </ion-label>
-      </ion-item>
-      <ion-button  color="tertiary" (click)="sendData(setTemp1.value, setHum1.value, SetDateS.value, SetTimeS.value, SetTimeE.value)">
-        SUCCESS 
-      </ion-button>
-    </ion-col> 
-  </center></ion-content> 
-<div class="alert">
-  <div class="in-alert">
-    ส่งสำเร็จ
-  </div>
-</div>
-<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-
+    </ion-item>
+    <ion-button
+      color="tertiary"
+      (click)="sendData(setTemp1.value, setHum1.value, SetDateS.value, SetTimeS.value, SetTimeE.value)"
+    >
+      SUCCESS
+    </ion-button>
+  </ion-col>
+</center>
