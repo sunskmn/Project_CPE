@@ -11,21 +11,7 @@
 struct storeStruct_t {
   char ssid[10] = "Motuthree";
   char pass[10] = "08123456";
-
-  bool StateSystem;
-
-  int CountSYS;
-
-  uint32_t StateFanIN1;
-  uint32_t StateFanIN2;
-  uint32_t StateFanOut1;
-  uint32_t StateFanOut2;
-  uint32_t StateFogging1;
-  uint32_t StateFogging2;
-  uint32_t StateHeater1;
-  uint32_t StateHeater2;
-  uint32_t StateHeater3;
-
+   int CountSYS;
   struct SetSystem {
     int DayCount;
     bool State;
@@ -36,9 +22,6 @@ struct storeStruct_t {
     char TimeAfter[10];
   } DaySubSec[16];
 };
-
-//const char* ssid = "Motuthree";
-//const char* password = "08123456";
 
 const char* mqtt_server = "broker.netpie.io";
 const int mqtt_port = 1883;
@@ -53,7 +36,6 @@ RTC_DS1307 myRTC;
 DateTime nowTime;
 
 storeStruct_t settings;
-storeStruct_t load;
 
 String Split(String data, char separator, int index)
 {
@@ -111,6 +93,15 @@ void setup() {
   //myRTC.adjust(DateTime(F(__DATE__),F(__TIME__)));
   //myRTC.adjust(DateTime(2020, 12, 21, 12, 0, 0));
   pinMode(2, OUTPUT);
+
+  for (int i = 0 ; i < 16; i++) {
+    Serial.println(settings.DaySubSec[i].Temp);
+    Serial.println(settings.DaySubSec[i].Hum);
+    Serial.println(settings.DaySubSec[i].ToDay);
+    Serial.println(settings.DaySubSec[i].TimeBefore);
+    Serial.println(settings.DaySubSec[i].TimeAfter);
+    Serial.println("--------------------------------------");
+  }
 }
 
 void loop() {
@@ -152,7 +143,6 @@ void callback(char* topic, byte* payload, unsigned int length) {
   for (int i = 0; i < length; i++) {
     CheckTopic += topic[i];
   }
-
   for (int i = 0; i < length; i++) {
     message = message + (char)payload[i];
   }
@@ -163,12 +153,6 @@ void callback(char* topic, byte* payload, unsigned int length) {
   Serial.print("IN : ");
   Serial.println(message);
 
-  if (message == "GET") {
-  }
-  if (message == "LEDON") {
-  }
-  if (message == "LEDOFF") {
-  }
   if (CheckTopic == "@msg/DataSys" && settings.CountSYS < 15) {
     Serial.println("Sent OK");
     for (int i = 0; i < 5; i++) {
@@ -178,13 +162,7 @@ void callback(char* topic, byte* payload, unsigned int length) {
     if (settings.CountSYS < 16) {
       settings.CountSYS++;
       Serial.println("CountSYS : " + String(settings.CountSYS));
-    } else {
-      Serial.println("100%");
     }
-    for (settings.CountSYS; settings.CountSYS > 17; settings.CountSYS++) {
-      Serial.println("CountSYS : " + String(settings.CountSYS));
-    }
-    Serial.println("koko");
     settings.DaySubSec[settings.CountSYS].Temp = DataSYS[0].toFloat();
     settings.DaySubSec[settings.CountSYS].Hum = DataSYS[1].toInt();
     DataSYS[2].toCharArray(settings.DaySubSec[settings.CountSYS].ToDay, 10);

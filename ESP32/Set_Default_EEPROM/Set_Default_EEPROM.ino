@@ -7,45 +7,35 @@ struct storeStruct_t {
   char ssid[10] = "Motuthree";
   char pass[10] = "08123456";
 
-  bool StateSystem;
-
   int CountSYS = 0;
 
-  uint32_t StateFanIN1;
-  uint32_t StateFanIN2;
-  uint32_t StateFanOut1;
-  uint32_t StateFanOut2;
-  uint32_t StateFogging1;
-  uint32_t StateFogging2;
-  uint32_t StateHeater1;
-  uint32_t StateHeater2;
-  uint32_t StateHeater3;
-
   struct SetSystem {
-    int DayCount;
     bool State;
     float Temp;
     int Hum;
-    char ToDay[11];
-    char TimeBefore[10];
-    char TimeAfter[10];
+    char ToDay[11] = "00/00/00";
+    char TimeBefore[10] = "00:00:00";
+    char TimeAfter[10] = "00:00:00";
   } DaySubSec[16];
 };
 
 storeStruct_t settings;
-storeStruct_t load;
 
 void setup() {
   Serial.begin(115200);
-  SetDefaultDataInEEPROM();
-  //SaveEEPROM();
+  SaveEEPROM();
   Serial.println(settings.ssid);
   Serial.println(settings.pass);
-
-  /*
-     char ssid[10] = "Motuthree";
-    char pass[10] = "08123456";
-  */
+  Serial.println();
+  for (int i = 0 ; i < 16; i++) {
+    Serial.println("--------------------------------------");
+    Serial.println(settings.DaySubSec[i].Temp);
+    Serial.println(settings.DaySubSec[i].Hum);
+    Serial.println(settings.DaySubSec[i].ToDay);
+    Serial.println(settings.DaySubSec[i].TimeBefore);
+    Serial.println(settings.DaySubSec[i].TimeAfter);
+    Serial.println("--------------------------------------");
+  }
 }
 
 void loop() {
